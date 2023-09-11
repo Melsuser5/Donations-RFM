@@ -26,11 +26,11 @@ elif option == "Show Density of Segments":
 st.header("Segment Descriptions and Database Count")
 
 segment_data = [
-    {"Segment": "Subs who have not donated in 1+ years","Customer Count":10251 },
-    {"Segment": " Single tix buyers who have not donated in 1+ years", "Customer Count": 25359},
-    {"Segment": "Single tix buyers", "Customer Count": 160},
-    {"Segment": "Major Donors 10K +", "Customer Count": 41},
-    {"Segment": "Sub who donate with subscription", "Customer Count": 264}
+    {"Segment":0,"Description": "Subs who have not donated in 1+ years","Customer Count":10251 },
+    {"Segment":1, "Description": " Single tix buyers who have not donated in 1+ years", "Customer Count": 25359},
+    {"Segment":2, "Description": "Single tix buyers", "Customer Count": 160},
+    {"Segment":3, "Description": "Major Donors 10K +", "Customer Count": 41},
+    {"Segment":4, "Description": "Sub who donate with subscription", "Customer Count": 264}
 
 ]
 seg_count = pd.DataFrame(segment_data)
