@@ -30,11 +30,12 @@ We can gain insights into the preferences and needs of different groups. This wi
 st.subheader("Customer Segment Visualisation")
 option = st.selectbox("Use the dropdown to see how dense each segment is", ("Segments", "Show Density of Segments"))
 if option == "Segments":
-    st.plotly_chart(fig_all, use_container_width=True)
     st.markdown(''' This 3D scatter plot visualises the segments and where they fall in terms of the three maeasures of RFM''')
+    st.plotly_chart(fig_all, use_container_width=True)
 elif option == "Show Density of Segments":
-    st.plotly_chart(log_fig, use_container_width=True)
     st.markdown('''This plot expands the axis scale based on the size of the clusters, allowing us see that clusters 0 and 1 are quite dense and are larger than clusters 2, 3, and 4.''')
+    st.plotly_chart(log_fig, use_container_width=True)
+    
 
 st.header("Segment Descriptions and Database Count")
 
@@ -64,6 +65,8 @@ st.pyplot(plt)
 
 
 st.header("Segments and Donation Channels")
+st.markdown(''' This plot shows the total amount donated by each segment, broken down by channel. The Web channel is by far the largest source of donations across all segements. 
+Notable also is the ammount processed via the box office channel in segment 3.''')
 
 segment_revenue = df.groupby(['overall_score', 'donation_source'])['revenue'].sum().reset_index()
 
@@ -77,8 +80,6 @@ plt.legend(title='Donation Source')
 plt.gca().ticklabel_format(style='plain', axis='y')
 st.pyplot(plt)
 
-st.markdown(''' This plot shows the total amount donated by each segment, broken down by channel. The Web channel is by far the largest source of donations across all segements. 
-Notable also is the ammount processed via the box office channel in segment 3.''')
 st.subheader("Possible Next Actions")
 st.markdown('''- Combining Mosaic data, campaign response data, ticket purchase data to create a customer profile
 - Monitor growth of segments to track trends''')
