@@ -77,6 +77,6 @@ st.pyplot(plt)
 
 st.markdown(''' This plot shows the total amount donated by each segment, broken down by channel. The Web channel is by far the largest source of donations across all segements. 
 Notable also is the ammount processed via the box office channel in segment 3.''')
-st.subheading("Possible Next Actions")
+st.subheader("Possible Next Actions")
 st.markdown('''- Combining Mosaic data, campaign response data, ticket purchase data to create a customer profile
 - Monitor growth of segments to track trends''')
