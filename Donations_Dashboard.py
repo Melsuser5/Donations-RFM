@@ -16,7 +16,18 @@ log_fig = px.scatter_3d(df, x='recency', y='frequency', z='revenue', color='Segm
 
 st.set_page_config(layout="centered")
 st.set_option('deprecation.showPyplotGlobalUse', True)
-st.title("Philanthropy RFM Segmentation Dashboard")
+st.title("Philanthropy RFM Segmentation Dashboard",divider+True)
+st.subheader("Customer Segmentation using RFM Analysis")
+st.markdown(''' RFM (Recency, Frequency, Monetary Value) Analysis is a data driven customer segmentation technique that assigns a score to customers  based on the combination of three variables:
+- Their last purchase,  
+- How often they have purchased in the past, and  
+- How much they have spent overall.  
+
+This model can be used to identify distinct customer segments and target them more directly.  
+We can gain insights into the preferences and needs of different groups. This will enable us to tailor our marketing efforts to them.''')
+
+
+
 option = st.selectbox("Use the dropdown to see how dense each segment is", ("Segments", "Show Density of Segments"))
 if option == "Segments":
     st.plotly_chart(fig_all, use_container_width=True)
