@@ -27,12 +27,14 @@ This model can be used to identify distinct customer segments and target them mo
 We can gain insights into the preferences and needs of different groups. This will enable us to tailor our marketing efforts to them.''')
 
 
-
+st.subheader("Customer Segment Visualisation")
 option = st.selectbox("Use the dropdown to see how dense each segment is", ("Segments", "Show Density of Segments"))
 if option == "Segments":
     st.plotly_chart(fig_all, use_container_width=True)
+    st.markdown(''' This 3D scatter plot visualises the segments and where they fall in terms of the three maeasures of RFM''')
 elif option == "Show Density of Segments":
     st.plotly_chart(log_fig, use_container_width=True)
+    st.markdown('''This plot expands the axis scale based on the size of the clusters, allowing us see that clusters 0 and 1 are quite dense and are larger than clusters 2, 3, and 4.''')
 
 st.header("Segment Descriptions and Database Count")
 
