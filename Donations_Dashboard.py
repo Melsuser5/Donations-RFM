@@ -6,7 +6,7 @@ import numpy as np
 import plotly.express as px
 pd.options.display.float_format = '{:.2f}'.format
 
-df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/donations_rfm_final.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/normalised_cont_df.csv')
 custom_palette = ["#5a8eb8", "#5ab874", "#bf3636", "#f08922", "#8146d4", "#e3528e", "#2a9ac7"]
 
 df["Segment"] = df["overall_score"].astype(str)
