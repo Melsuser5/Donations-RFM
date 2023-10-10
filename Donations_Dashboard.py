@@ -19,12 +19,12 @@ st.set_option('deprecation.showPyplotGlobalUse', True)
 st.title("Philanthropy RFM Segmentation Dashboard")
 st.subheader("Customer Segmentation using RFM Analysis")
 st.markdown(''' RFM (Recency, Frequency, Monetary Value) Analysis is a data driven customer segmentation technique that assigns a score to customers  based on the combination of three variables:
-- Their last purchase,  
-- How often they have purchased in the past, and  
-- How much they have spent overall.  
+- The time of their last donation.  
+- How often they have donated (over 5 year period).
+- The total amount donated (over 5 year period).  
 
 This model can be used to identify distinct customer segments and target them more directly.  
-We can gain insights into the preferences and needs of different groups. This will enable us to tailor our marketing efforts to them.''')
+We can gain insights into the preferences and needs of different groups. This will enable us to tailor campaigns to them.''')
 
 
 st.subheader("Customer Segment Visualisation")
