@@ -51,11 +51,11 @@ elif option == "Show Density of Segments":
 st.header("Segment Descriptions and Database Count")
 
 segment_data = [
-    {"Segment":0,"Description": "Lapsed donors 3+ years","Customer Count":18548 },
-    {"Segment":1, "Description": "Lapsed Donors 1+ years", "Customer Count": 6627},
-    {"Segment":2, "Description": "Returning Donors", "Customer Count": 742},
-    {"Segment":3, "Description": "Higher Value Donors", "Customer Count": 205},
-    {"Segment":4, "Description": "New Donors", "Customer Count": 10882}
+    {"Segment":0,"Description": "Lapsed donors 3+ years","Customer Count":790 },
+    {"Segment":1, "Description": "Lapsed Donors 1+ years", "Customer Count": 954},
+    {"Segment":2, "Description": "Returning Donors", "Customer Count": 703},
+    {"Segment":3, "Description": "Higher Value Donors", "Customer Count": 154},
+    {"Segment":4, "Description": "New Donors", "Customer Count": 2067}
 
 ]
 seg_count = pd.DataFrame(segment_data)
@@ -64,14 +64,12 @@ seg_count.set_index(['Segment'],inplace=True)
 st.table(seg_count)
 
 sub_counts = df.groupby(['overall_score']).size().reset_index(name='count')
-
 # Plot the count plot
 plt.figure(figsize=(10, 6))
 sns.barplot(x='overall_score', y='count', hue ='count', data=sub_counts)
 plt.xlabel('Segment')
 plt.ylabel('Count')
 plt.title('Number of Customers by Segment')
-plt.yscale('log')
 st.pyplot(plt)
 
 
