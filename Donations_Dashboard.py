@@ -38,7 +38,7 @@ We can gain insights into the preferences and needs of different groups. This wi
 
 
 st.subheader("Customer Segment Visualisation")
-st.markdown(''' *Note this Plot now exclude donations of less than $50''')
+st.markdown(''' *Note this Plot now excludes donations of less than $50''')
 option = st.selectbox("Use the dropdown to see how dense each segment is", ("Segments", "Show Density of Segments"))
 if option == "Segments":
     st.markdown(''' This 3D scatter plot visualises the segments and where they fall in terms of the three maeasures of RFM''')
@@ -90,6 +90,7 @@ plt.gca().ticklabel_format(style='plain', axis='y')
 st.pyplot(plt)
 
 st.subheader("Segments with Donation Levels")
+st.markdown(''' *Note this data INCLUDES donations of less than $50''')
 
 sub_df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df.csv')
 subsegments = sub_df.groupby(['overall_score', 'subsegment']).size().reset_index(name='count')
