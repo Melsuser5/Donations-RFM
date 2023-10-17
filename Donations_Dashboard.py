@@ -86,6 +86,15 @@ st.subheader("Segments with Donation Levels")
 sub_df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df.csv')
 subsegments = sub_df.groupby(['overall_score', 'subsegment']).size().reset_index(name='count')
 
+segment_names = {
+    0: 'Lapsed donors 3+ years',
+    1: 'Lapsed Donors 1+ years',
+    2: 'Returning Donors',
+    3: 'High Value Donors',
+    4: 'New Donors'
+}
+
+
 # Create a bar plot with the y-axis representing revenue
 plt.figure(figsize=(10, 6))
 ax = sns.barplot(x='overall_score', y='count', hue='subsegment', data=subsegments)
