@@ -6,7 +6,7 @@ import numpy as np
 import plotly.express as px
 pd.options.display.float_format = '{:.2f}'.format
 
-df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/normalised_cont_df.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/revised_df.csv')
 custom_palette = ["#5a8eb8", "#5ab874", "#bf3636", "#f08922", "#8146d4", "#e3528e", "#2a9ac7"]
 
 df["Segment"] = df["overall_score"].astype(str)
@@ -28,6 +28,7 @@ We can gain insights into the preferences and needs of different groups. This wi
 
 
 st.subheader("Customer Segment Visualisation")
+st.markdown(''' *Note this Plot now exclude donations of less than $50''')
 option = st.selectbox("Use the dropdown to see how dense each segment is", ("Segments", "Show Density of Segments"))
 if option == "Segments":
     st.markdown(''' This 3D scatter plot visualises the segments and where they fall in terms of the three maeasures of RFM''')
@@ -40,8 +41,8 @@ elif option == "Show Density of Segments":
 st.header("Segment Descriptions and Database Count")
 
 segment_data = [
-    {"Segment":0,"Description": "Lapsed donors who not donated in 3+ years","Customer Count":18548 },
-    {"Segment":1, "Description": "Lapsed Donors have not donated in 1+ years", "Customer Count": 6627},
+    {"Segment":0,"Description": "Lapsed donors 3+ years","Customer Count":18548 },
+    {"Segment":1, "Description": "Lapsed Donors 1+ years", "Customer Count": 6627},
     {"Segment":2, "Description": "Returning Donors", "Customer Count": 742},
     {"Segment":3, "Description": "Higher Value Donors", "Customer Count": 205},
     {"Segment":4, "Description": "New Donors", "Customer Count": 10882}
@@ -80,6 +81,28 @@ plt.legend(title='Donation Source')
 plt.gca().ticklabel_format(style='plain', axis='y')
 st.pyplot(plt)
 
-st.subheader("Possible Next Actions")
-st.markdown('''- Combining Mosaic data, campaign response data, ticket purchase data to create a customer profile
-- Monitor growth of segments to track trends''')
+st.subheader("Segments with Donation Levels")
+
+sub_df = pd.read('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df.csv')
+subsegments = sub_df.groupby(['overall_score', 'subsegment']).size().reset_index(name='count')
+
+# Create a bar plot with the y-axis representing revenue
+plt.figure(figsize=(10, 6))
+ax = sns.barplot(x='overall_score', y='count', hue='subsegment', data=subsegments)
+plt.xlabel('Segment')
+plt.ylabel('Count')
+plt.title('Segments and Donation Levels')
+plt.legend(title='Donation Level')
+plt.gca().ticklabel_format(style='plain', axis='y')
+for p in ax.patches:
+    ax.annotate(f'{p.get_height():.0f}', (p.get_x() + p.get_width() / 2., p.get_height()), ha='center', va='center', fontsize=12, color='black', xytext=(0, 5), textcoords='offset points')
+
+plt.gca().ticklabel_format(style='plain', axis='y')
+ax.set_xticks(range(len(segment_names)))
+ax.set_xticklabels([segment_names.get(score, '') for score in range(len(segment_names))], rotation=45)
+
+st.pyplot(plt)
+
+pivot_df = subsegments.pivot(index='overall_score', columns='subsegment', values='count')
+st.table(pivot_df)
+
