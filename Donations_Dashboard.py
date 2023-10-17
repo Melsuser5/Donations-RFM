@@ -9,7 +9,17 @@ pd.options.display.float_format = '{:.2f}'.format
 df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/revised_df_4.csv')
 custom_palette = ["#5a8eb8", "#5ab874", "#bf3636", "#f08922", "#8146d4", "#e3528e", "#2a9ac7"]
 
-##df["Segment"] = df["overall_score"].astype(str)
+segment_names = {
+    '0': 'Lapsed donors 3+ years',
+    '1': 'Lapsed Donors 1+ years',
+    '2': 'Returning Donors',
+    '3': 'High Value Donors',
+    '4': 'New Donors'
+}
+df['Segment'] = df['Segment'].replace(segment_names)
+
+
+
 fig_all = px.scatter_3d(df, x='recency', y='frequency', z='revenue', color='Segment',width=1600, height=800)
 log_fig = px.scatter_3d(df, x='recency', y='frequency', z='revenue', color='Segment', log_x=False,log_y=True,log_z=True, width=1600, height=800,color_continuous_scale=custom_palette)
 
