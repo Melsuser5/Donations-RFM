@@ -113,5 +113,6 @@ ax.set_xticklabels([segment_names.get(score, '') for score in range(len(segment_
 st.pyplot(plt)
 
 pivot_df = subsegments.pivot(index='overall_score', columns='subsegment', values='count')
+pivot_df.rename(index=segment_names, inplace=True)
 st.table(pivot_df)
 
