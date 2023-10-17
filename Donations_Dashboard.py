@@ -83,7 +83,7 @@ st.pyplot(plt)
 
 st.subheader("Segments with Donation Levels")
 
-sub_df = pd.read('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df.csv')
+sub_df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df.csv')
 subsegments = sub_df.groupby(['overall_score', 'subsegment']).size().reset_index(name='count')
 
 # Create a bar plot with the y-axis representing revenue
