@@ -12,7 +12,7 @@ custom_palette = ["#5a8eb8", "#5ab874", "#bf3636", "#f08922", "#8146d4", "#e3528
 segment_names = {
     '0': 'Lapsed donors 3+ years',
     '1': 'Lapsed Donors 1+ years',
-    '2': 'Returning Donors',
+    '2': 'Recurring Donors',
     '3': 'High Value Donors',
     '4': 'New Donors'
 }
