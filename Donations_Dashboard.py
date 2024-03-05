@@ -92,7 +92,7 @@ st.pyplot(plt)
 st.subheader("Segments with Donation Levels")
 st.markdown(''' *Note this data INCLUDES donations of less than $50''')
 
-sub_df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df.csv')
+sub_df = pd.read_csv('https://raw.githubusercontent.com/Melsuser5/Donations-RFM/main/subsegment_df_new.csv')
 subsegments = sub_df.groupby(['overall_score', 'subsegment']).size().reset_index(name='count')
 
 segment_names = {
