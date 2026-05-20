@@ -28,20 +28,19 @@ st.set_page_config(layout="centered")
 #st.set_option('deprecation.showPyplotGlobalUse', True)
 st.title("Philanthropy RFM Segmentation Dashboard")
 st.subheader("Customer Segmentation using RFM Analysis")
-st.markdown(''' RFM (Recency, Frequency, Monetary Value) Analysis is a data driven customer segmentation technique that assigns a score to customers  based on the combination of three variables:
-- The time of their last donation.  
-- How often they have donated (over 5 year period).
-- The total amount donated (over 5 year period).  
+st.markdown(''' RFM (Recency, Frequency, Monetary Value) Analysis is a customer segmentation technique that groups together similar customers  based on the combination of three variables:
+- The time of their last donation in Days (Recency).  
+- How many times they have donated over 5 year period (Frequency).
+- The total amount donated over 5 year period (Monetary Value).  
 
-This model can be used to identify distinct customer segments and target them more directly.  
-We can gain insights into the preferences and needs of different groups. This will enable us to tailor campaigns to them.''')
+This model can be used to identify distinct customer segments and target them more directly, gain insights into the preferences and needs of different groups, and enable us to tailor campaigns to them.''')
 
 
 st.subheader("Customer Segment Visualisation")
 st.markdown(''' *Note this Plot now excludes donations of less than $50''')
 option = st.selectbox("Use the dropdown to see how dense each segment is", ("Segments", "Show Density of Segments"))
 if option == "Segments":
-    st.markdown(''' This 3D scatter plot visualises the segments and where they fall in terms of the three maeasures of RFM''')
+    st.markdown(''' This 3D scatter plot visualises the segments and where they fall in terms of the three measures of RFM, each dot represents a single donor''')
     st.plotly_chart(fig_all, use_container_width=True)
 elif option == "Show Density of Segments":
     st.markdown('''This plot expands the axis scale based on the size of the clusters, allowing us see that clusters 0 and 1 are quite dense and are larger than clusters 2, 3, and 4.''')
