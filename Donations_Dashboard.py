@@ -50,8 +50,8 @@ elif option == "Show Density of Segments":
 st.header("Segment Descriptions and Database Count")
 
 segment_data = [
-    {"Segment":0,"Segment Name": "Lapsed donors 3+ years","Description":"Have not donatated for 3+ years","Customer Count":790 },
-    {"Segment":1, "Segment Name": "Lapsed Donors 1+ years","Description":"Have not donatated for 1-3 years", "Customer Count": 954},
+    {"Segment":0,"Segment Name": "Lapsed donors 3+ years","Description":"Have not donated for 3+ years","Customer Count":790 },
+    {"Segment":1, "Segment Name": "Lapsed Donors 1+ years","Description":"Have not donated for 1-3 years", "Customer Count": 954},
     {"Segment":2, "Segment Name": "Returning Donors","Description":"Have donated within the last year and have donated 5+ times in the last 5 years", "Customer Count": 703},
     {"Segment":3, "Segment Name": "Higher Value Donors","Description":"Have donated within the last year and have donated $2500+ in the last 5 years", "Customer Count": 154},
     {"Segment":4, "Segment Name": "New Donors","Description":"Have donated within the last year and have donated between 1-4 times in the last 5 years", "Customer Count": 2067}
